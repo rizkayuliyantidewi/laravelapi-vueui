@@ -1,7 +1,11 @@
 <template>
 <div class="card shadow mt-3">
   <div class="card-body">
+<<<<<<< HEAD
     <h5 class="card-title">Add friends</h5>
+=======
+    <h5 class="card-title">Add friend</h5>
+>>>>>>> decce96ef64dac53f79078783cfb4f2f7fc3f241
      <form class="row g-3"  @submit.prevent="store">
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Nama</label>
@@ -14,7 +18,11 @@
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">No Tlp</label>
       <input type="number" class="form-control" id="inputPassword4" />
+<<<<<<< HEAD
         v-model="friend.no_tlp"/>
+=======
+        v-model="friend.nama"/>
+>>>>>>> decce96ef64dac53f79078783cfb4f2f7fc3f241
       <div class="alert alert-danger" v-if="validation.no_tlp">
         {{ validation.no_tlp[0] }}
         </div>
@@ -54,13 +62,21 @@ export default {
        let nama = friend.nama
        let no_tlp = friend.no_tlp
        let alamat = friend.alamat
+<<<<<<< HEAD
        axios.post("http://pia.labirin.co.id/api/friends/", {
+=======
+       axios.post('http://127.0.0.1:8000/api/friends', {
+>>>>>>> decce96ef64dac53f79078783cfb4f2f7fc3f241
          nama: nama,
          no_tlp: no_tlp,
          alamat: alamat
        }).then( () => {
          router.push({
+<<<<<<< HEAD
            name:'Home',
+=======
+           name:'Home'
+>>>>>>> decce96ef64dac53f79078783cfb4f2f7fc3f241
          })
        }).catch(error => {
           console.log(error)
