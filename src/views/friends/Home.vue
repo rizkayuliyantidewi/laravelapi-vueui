@@ -20,10 +20,17 @@
           <td>{{ friend.no_tlp }}</td>
           <td>{{ friend.alamat }}</td>
           <td>
-            <router-link class="btn btn-success" to="/editfriends"
+            <router-link
+              class="btn btn-success"
+              :to="{ name: 'Editfriends', params: { id: friend.id } }"
               >Edit</router-link
             >
-            <button class="btn btn-danger">delete</button>
+            <button
+              @click.prevent="friendDelete(friend.id)"
+              class="btn btn-danger"
+            >
+              delete
+            </button>
           </td>
         </tr>
       </tbody>
@@ -44,19 +51,30 @@ export default {
   },
   setup() {
     let friends = ref([]);
-
     onMounted(() => {
       axios
-        .get(" http://127.0.0.1:8000/api/friends")
+        .get('http://pia.labirin.co.id/api/friends')
         .then((response) => {
-          friends.value = response.data.data;
+          friends.value = Response.data.data;
         })
         .catch((error) => {
           console.log(error);
         });
     });
+    function friendDelete(id) {
+      axios
+        .delete('http://pia.labirin.co.id/api/friends/${id}')
+        .then(() => {
+          let z = this.friends.map((friends) => friends.id).index(id);
+          this.friends.splice(z, 1);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
     return {
       friends,
+      friendDelete,
     };
   },
 };
